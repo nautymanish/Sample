@@ -100,6 +100,25 @@ namespace WindowsFormsApplication1
             // operator to chain delegates together and -(minus) operator to remove.
             MathDelegate del5 = del4 + del2 + del3 + del1;
             del5(2, 0);
+            /* To find number of occurence of word in string
+             string s = "occurence";
+             
+             //first way
+            var res = from r in s
+                      group r by r into y
+                      select y;
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.Key + "" + r.Count());
+            }
+            //second way
+            var res1 = s.GroupBy(t => t).Select(e => new { ch=e.Key, count=e.Count() });
+            foreach (var r in res1)
+            {
+                Console.WriteLine(r.ch + "" + r.count);
+            }
+            */
+            
             Application.Run(new Form1());
 
         }
