@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ElevatorProblem;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -22,6 +23,7 @@ namespace WindowsFormsApplication1
     public delegate void MathDelegate(int No1, int No2);
     static class Program
     {
+       
         public static void Add(int x, int y)
         {
             Console.WriteLine("THE SUM IS : " + (x + y));
@@ -36,6 +38,7 @@ namespace WindowsFormsApplication1
         }
         public static void Div(int x, int y)
         {
+
             try
             {
                 Console.WriteLine("THE DIV IS : " + (x / y));
@@ -75,10 +78,22 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-
+        private static string result;
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Hey Jude");
+            John();
+            Console.WriteLine(result);
+            Paul();
+            Console.WriteLine(result);
+            Ringo();
+            Console.WriteLine(result);
+            George();
+            Console.WriteLine(result);
+            Console.ReadLine();
+
+
             var obj = new A();
             var x = obj.Check();
             Application.EnableVisualStyles();
@@ -100,30 +115,42 @@ namespace WindowsFormsApplication1
             // operator to chain delegates together and -(minus) operator to remove.
             MathDelegate del5 = del4 + del2 + del3 + del1;
             del5(2, 0);
-            /* To find number of occurence of word in string
-             string s = "occurence";
-             
-             //first way
-            var res = from r in s
-                      group r by r into y
-                      select y;
-            foreach (var r in res)
-            {
-                Console.WriteLine(r.Key + "" + r.Count());
-            }
-            //second way
+
+            string s = "occurence";
+           
             var res1 = s.GroupBy(t => t).Select(e => new { ch=e.Key, count=e.Count() });
             foreach (var r in res1)
             {
                 Console.WriteLine(r.ch + "" + r.count);
             }
-            */
-            
+
             Application.Run(new Form1());
 
         }
+        static async Task John()
+        {
+            await Task.Delay(5);
+            result = "Don't make it bad";
+        }
+        static async Task<object> Paul()
+        {
+            await Task.Delay(0);
+            result = "Don't be afraid";
+            return Task.FromResult<object>(null);
+        }
+        static async Task<bool> Ringo()
+        {
+            Thread.Sleep(5);
+            result = "Don't let me down";
+            return false;
+        }
+        static async Task<string> George()
+        {
+            Thread.Sleep(-1);
+            result = "You'll do";
+            return "Beatles!";
+        }
 
-         
     }
 
 public class A
@@ -155,4 +182,5 @@ public class A
 
 
     }
+
 }
