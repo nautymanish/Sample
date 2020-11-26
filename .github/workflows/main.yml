@@ -34,10 +34,10 @@ jobs:
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ f8b4de594a7de481b8afd07a7b4db5cd5592a29c }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ 86c143552ec35df10c082f20445ec3c054faf326 }}
+          GITHUB_TOKEN: f8b4de594a7de481b8afd07a7b4db5cd5592a29c  # Needed to get PR information, if any
+          SONAR_TOKEN: 86c143552ec35df10c082f20445ec3c054faf326 
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nautymanish_Sample" /o:"nautymanish" /d:sonar.login="${{ 86c143552ec35df10c082f20445ec3c054faf326 }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"nautymanish_Sample" /o:"nautymanish" /d:sonar.login="86c143552ec35df10c082f20445ec3c054faf326" /d:sonar.host.url="https://sonarcloud.io"
           <your build command>
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ 86c143552ec35df10c082f20445ec3c054faf326 }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="86c143552ec35df10c082f20445ec3c054faf326"
